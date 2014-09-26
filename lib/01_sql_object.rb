@@ -5,18 +5,18 @@ require 'active_support/inflector'
 
 class SQLObject
   def self.columns
-
     table = DBConnection.execute2(<<-SQL)
       SELECT
         *
       FROM
-      #{self.table_name}
+        #{self.table_name}
     SQL
 
     table[0].map { |entry| entry.to_sym }
   end
 
   def initialize(params)
+    p "hello"
     p params
     params.each do |attr_name, value|
       attr_sym = attr_name.to_sym
@@ -25,6 +25,14 @@ class SQLObject
       end
     end
   end
+
+  # def attributes
+  #   unless instance_variable_get(:@attributes)
+  #     instance_variable_set(:@attributes, Hash.new)
+  #   end
+  #
+  #   instance_variable_get(:@attributes)
+  # end
 
   def self.finalize!
     define_method(:attributes) do
