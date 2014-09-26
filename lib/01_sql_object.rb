@@ -25,7 +25,6 @@ class SQLObject
 
     self.columns.each do |column|
       define_method("#{column}=".to_sym) do |arg|
-        attributes
         attribute = instance_variable_get(:@attributes)
         attribute[column] = arg
         instance_variable_set(:@attributes, attribute)

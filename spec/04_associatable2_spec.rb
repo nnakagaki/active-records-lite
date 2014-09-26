@@ -36,7 +36,7 @@ describe 'Associatable' do
     end
 
     it 'stores `belongs_to` options' do
-      cat_assoc_options = Cat.assoc_options
+      p cat_assoc_options = Cat.assoc_options
       human_options = cat_assoc_options[:human]
 
       expect(human_options).to be_instance_of(BelongsToOptions)
